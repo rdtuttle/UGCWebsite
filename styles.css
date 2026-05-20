@@ -88,18 +88,23 @@ main,
 }
 
 .hero {
-  min-height: calc(100vh - 86px);
+  min-height: calc(100vh - 84px);
+  display: flex;
+  align-items: center;
+  padding: 28px 0 48px;
+}
+
+.hero-layout {
+  width: 100%;
   display: grid;
-  align-content: center;
-  gap: 28px;
-  padding: 38px 0 54px;
+  grid-template-columns: minmax(320px, 0.78fr) minmax(520px, 1.22fr);
+  gap: 34px;
+  align-items: center;
 }
 
 .hero-copy {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.46fr);
-  gap: 28px;
-  align-items: end;
+  align-content: center;
 }
 
 .eyebrow {
@@ -120,8 +125,8 @@ h3 {
 }
 
 h1 {
-  max-width: 11ch;
-  font-size: 5.2rem;
+  max-width: 9.5ch;
+  font-size: 4.8rem;
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -154,9 +159,11 @@ h3 {
 }
 
 .hero-actions {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 16px;
-  justify-items: start;
+  align-items: center;
+  margin-top: 22px;
 }
 
 .btn,
@@ -185,9 +192,9 @@ h3 {
 
 .hero-reel {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr 0.9fr;
-  gap: 18px;
-  align-items: end;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  align-items: center;
 }
 
 .phone-card,
@@ -207,28 +214,30 @@ h3 {
   padding: 10px;
 }
 
+.phone-card {
+  min-width: 0;
+}
+
 .phone-card video,
 .video-card video {
   width: 100%;
   aspect-ratio: 9 / 16;
+  max-height: min(68vh, 620px);
   border-radius: 6px;
   object-fit: cover;
   display: block;
   background: #000;
 }
 
-.offset-low {
-  transform: translateY(30px);
-}
-
-.offset-high {
-  transform: translateY(-24px);
+.phone-card:nth-child(2) {
+  transform: translateY(22px);
 }
 
 .metric-strip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1px;
+  margin-top: 28px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -353,14 +362,14 @@ h3 {
 
 @media (max-width: 1050px) {
   h1 {
-    font-size: 4rem;
+    font-size: 3.7rem;
   }
 
   h2 {
     font-size: 2.65rem;
   }
 
-  .hero-copy,
+  .hero-layout,
   .split-section {
     grid-template-columns: 1fr;
   }
@@ -374,6 +383,11 @@ h3 {
 
   .phone-card {
     scroll-snap-align: center;
+  }
+
+  .phone-card video,
+  .video-card video {
+    max-height: 560px;
   }
 
   .video-grid,
@@ -393,7 +407,8 @@ h3 {
   }
 
   h1 {
-    font-size: 2.75rem;
+    font-size: 2.55rem;
+    max-width: 10ch;
   }
 
   h2 {
@@ -402,7 +417,8 @@ h3 {
 
   .hero {
     min-height: auto;
-    padding-top: 30px;
+    align-items: start;
+    padding-top: 24px;
   }
 
   .hero-reel {
@@ -413,12 +429,15 @@ h3 {
   }
 
   .phone-card {
-    min-width: 74vw;
+    min-width: 70vw;
   }
 
-  .offset-low,
-  .offset-high {
+  .phone-card:nth-child(2) {
     transform: none;
+  }
+
+  .phone-card video {
+    max-height: 520px;
   }
 
   .metric-strip,
